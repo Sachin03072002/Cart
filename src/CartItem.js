@@ -12,8 +12,25 @@ class CartItem extends React.Component {
         }
         //we can also bind the function here and call its refernce in the onClick function
         //this.increaseQuantity = this.increaseQuantity.bind(this);
-
+        // this.testing();
     }
+    
+
+    // testing(){
+    //     const promise = new Promise((resolve,reject)=>{
+    //         setTimeout(() => {
+    //             resolve('done');
+    //         },5000);
+    //     })
+    //     promise.then(()=>{
+    //         //setState acts like a synchronous call
+    //         this.setState({qty: this.state.qty+10});
+    //         this.setState({qty: this.state.qty+10});
+    //         this.setState({qty: this.state.qty+10});
+    //         console.log('state',this.state);
+    //     });
+    // }
+
     //or use arrow function for binding
     increaseQuantity = () => {
         //console.log('state',this.state);
@@ -29,9 +46,14 @@ class CartItem extends React.Component {
                 qty: prevState.qty+1
             }
         });
-        
     }
+    
     decreaseQuantity = () =>{
+        const { qty }=this.state;
+        if(qty === 0){
+            return;
+             
+        }
         this.setState((prevState) =>{
             return {
                 qty: prevState.qty-1
